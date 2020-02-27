@@ -1,9 +1,9 @@
-namespace ExpressCoreBank.Migrations
+﻿namespace ExpressCoreBank.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialMig : DbMigration
+    public partial class Init : DbMigration
     {
         public override void Up()
         {
@@ -43,9 +43,9 @@ namespace ExpressCoreBank.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 255),
                         Branch = c.Int(nullable: false),
-                        gender = c.Int(nullable: false),
+                        Gender = c.Int(nullable: false),
                         Address = c.String(),
-                        Phone = c.Long(nullable: false),
+                        Phone = c.String(),
                         Email = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
@@ -89,6 +89,8 @@ namespace ExpressCoreBank.Migrations
                         LockoutEnabled = c.Boolean(nullable: false),
                         AccessFailedCount = c.Int(nullable: false),
                         UserName = c.String(nullable: false, maxLength: 256),
+                        FirstName = c.String(),
+                        LastName = c.String(),
                         Branch = c.Int(),
                         Discriminator = c.String(nullable: false, maxLength: 128),
                     })

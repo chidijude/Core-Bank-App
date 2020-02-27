@@ -6,15 +6,55 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web;
+using ExpressLogic;
 using System.Web.Mvc;
 using ExpressCoreBank.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace ExpressCoreBank.Controllers
 {
     public class UsersController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db;
 
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+
+        public UsersController()
+        {
+            db = new ApplicationDbContext();
+        }
+
+        public UsersController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
+        }
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
         // GET: Users
         public async Task<ActionResult> Index()
         {
@@ -49,11 +89,27 @@ namespace ExpressCoreBank.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(User user)
         {
+            
             if (ModelState.IsValid)
             {
-                db.Users.Add(user);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                var userr = new User { UserName = user.Email, Email = user.Email };//, PhoneNumber = user.PhoneNumber,
+                                                                                   // FirstName = user.FirstName, LastName = user.LastName, Branch = user.Branch};
+
+                string pwd = Generator.genPassword();
+
+                var result = await UserManager.CreateAsync(user, pwd);
+                if (result.Succeeded)
+                {
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">Here</a>");
+
+                    //db.Users.Add(user);
+                    //await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+                AddErrors(result);
+
             }
 
             return View(user);
@@ -120,9 +176,32 @@ namespace ExpressCoreBank.Controllers
         {
             if (disposing)
             {
+                if (_userManager != null)
+                {
+                    _userManager.Dispose();
+                    _userManager = null;
+                }
+
+                if (_signInManager != null)
+                {
+                    _signInManager.Dispose();
+                    _signInManager = null;
+                }
+
                 db.Dispose();
+
             }
+
             base.Dispose(disposing);
         }
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
+        }
+
     }
 }
