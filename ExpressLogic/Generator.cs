@@ -20,10 +20,10 @@ namespace ExpressLogic
             return res.ToString();
         }
 
-        public void Main()
+        /*static void Main(string[])
         {
-            Console.WriteLine(CreatePassword());
-        }
+            Console.WriteLine(Generator.CreatePassword());
+        }*/
     }
 
 }
