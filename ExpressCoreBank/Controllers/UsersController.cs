@@ -102,7 +102,12 @@ namespace ExpressCoreBank.Controllers
                 {
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">Here</a>");
+
+
+                    string message = "login with your username " + user.UserName + " and your default password is " + pwd + "  using the link " + callbackUrl;
+                    MailService.SendEmail( message, user.Email);
+           
+                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">Here</a>");
 
                     //db.Users.Add(user);
                     //await db.SaveChangesAsync();
