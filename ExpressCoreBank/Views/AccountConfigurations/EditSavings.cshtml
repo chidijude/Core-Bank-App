@@ -1,0 +1,79 @@
+﻿@model Express.Core.Models.AccountConfiguration
+
+@{
+    ViewBag.Title = "EditSavings";
+}
+
+<h2>Account Configuration</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Edit Savings Account Configuration</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.IsBusinessOpen )
+        @Html.HiddenFor(model => model.FinancialDate )
+
+        @Html.HiddenFor(model => model.CurrentCot )
+        @Html.HiddenFor(model => model.CurrentCotIncomeGlID )
+        @Html.HiddenFor(model => model.CurrentInterestExpenseGlID )
+        @Html.HiddenFor(model => model.CurrentCreditInterestRate )
+        @Html.HiddenFor(model => model.CurrentMinimumBalance )
+
+        @Html.HiddenFor(model => model.LoanDebitInterestRate )
+        @Html.HiddenFor(model => model.LoanInterestExpenseGLID )
+        @Html.HiddenFor(model => model.LoanInterestIncomeGlID )
+        @Html.HiddenFor(model => model.LoanInterestReceivableGlID )
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SavingsCreditInterestRate, "Interest Rate", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SavingsCreditInterestRate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SavingsCreditInterestRate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SavingsMinimumBalance, "Minimum Balance", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SavingsMinimumBalance, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SavingsMinimumBalance, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SavingsInterestExpenseGlID, "Select Interest Expense GL", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("SavingsInterestExpenseGlID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SavingsInterestExpenseGlID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SavingsInterestPayableGlID, "Select Interest Payable GL", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("SavingsInterestPayableGlID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SavingsInterestPayableGlID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div class="col-md-offset-2 col-md-10">
+    @Html.ActionLink("Back", "Details", new{}, new {@class="btn btn-primary"})
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

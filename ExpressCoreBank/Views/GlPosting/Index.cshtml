@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Express.Core.Models.GlPosting>
+
+@using ExpressCoreBank.Models;
+@{
+    ViewBag.Title = "Index";
+    ApplicationDbContext db = new ApplicationDbContext();
+}
+
+<h2>GL Postings</h2>
+
+<p>
+    @Html.ActionLink("Post New", "SelectFirstAccount")
+</p>
+<table class="table table-bordered table-striped" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Cr Account Name")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CrGlAccount.CodeNumber)
+            </th>
+            <th>
+                @Html.DisplayName("Dr Account Name")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DrGlAccount.CodeNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreditAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DebitAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Narration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostInitiatorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CrGlAccount.AccountName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CrGlAccount.CodeNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DrGlAccount.AccountName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DrGlAccount.CodeNumber)
+            </td>
+            <td>
+                N @item.CreditAmount.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+            </td>
+            <td>
+                N @item.DebitAmount.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Narration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.PostInitiatorId)*@
+                @{
+                    var name = db.Users.Find(item.PostInitiatorId).UserName;
+                }
+                @name
+            </td>
+            <td class="text-success">
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.ID }, new {@class="btn btn-success "})
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new {@class="btn btn-success "})
+            </td>
+        </tr>
+                    }
+</tbody>
+
+</table>

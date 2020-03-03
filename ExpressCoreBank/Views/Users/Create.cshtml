@@ -4,7 +4,8 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Create New User</h2>
+<p>@ViewBag.ErrorMessage</p>
 
 
 @using (Html.BeginForm())
@@ -14,7 +15,6 @@
 <div class="form-horizontal">
     <h4>User</h4>
     <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="form-group">
         @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -25,6 +25,7 @@
     </div>
 
 
+
     <div class="form-group">
         @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -33,7 +34,15 @@
         </div>
     </div>
 
-    
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
     <div class="form-group">
         @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -50,21 +59,18 @@
         </div>
     </div>
 
-
     <div class="form-group">
-        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.BranchId, "BranchId", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            @Html.DropDownList("BranchId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.BranchId, "", new { @class = "text-danger" })
         </div>
     </div>
-
-
     <div class="form-group">
-        @Html.LabelFor(model => model.Branch, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.RoleID, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EnumDropDownListFor(model => model.Branch, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Branch, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(model => model.RoleID, ViewBag.Roles as SelectList, "--select--", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.RoleID, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -77,10 +83,9 @@
 }
 
 <div>
-    <button class="btn btn-default">@Html.ActionLink("<< Users List", "Index")</button>
-    
+    @Html.ActionLink("Back to List", "Index")
 </div>
-
+@ViewBag.error
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

@@ -22,10 +22,118 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Users", "Index", "Users")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Account Config", "Create", "AccountConfigurations")</li>
+                    
+                    @*@<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">GL Category <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Add GL Category", "Create", "GlCategories")</li>
+                            <li>@Html.ActionLink("View GL Categories", "Index", "GlCategories")</li>
+
+                            <li role="separator" class="divider"></li>
+                            <li></li>
+
+                        </ul>
+                    </li>*@
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">GL Account <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Add GL Account", "Create", "GlAccounts")</li>
+                            <li>@Html.ActionLink("View GL accounts", "Index", "GlAccounts")</li>
+
+                            <li role="separator" class="divider"></li>
+                            <li></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Add User", "Create", "Users")</li>
+                            <li>@Html.ActionLink("View List of Users", "Index", "Users")</li>
+
+                            <li role="separator" class="divider"></li>
+                            <li></li>
+
+                        </ul>
+                    </li>
+
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tellers <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Assign Tellers", "Create", "UserTills")</li>
+                            <li>@Html.ActionLink("View List of Tellers", "Index", "UserTills")</li>
+
+                            <li role="separator" class="divider"></li>
+                            <li></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Customers <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Add New Customer", "Create", "Customers")</li>
+                            <li>@Html.ActionLink("View Customer", "Index", "Customers")</li>
+
+                            <li role="separator" class="divider"></li>
+                            <li></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Customers Account<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            
+                            <li>@Html.ActionLink("View Customers Account", "Index", "CustomerAccounts")</li>
+
+                            <li role="separator" class="divider"></li>
+                            <li></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Teller Posting <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Post Transaction", "UserPosts", "TellerPosting")</li>
+                            <li>@Html.ActionLink("Post Transaction", "SelectAccount", "TellerPosting")</li>
+                            <li>@Html.ActionLink("View List of Teller Posted", "Index", "TellerPosting")</li>
+
+                            <li role="separator" class="divider"></li>
+                            <li></li>
+
+                        </ul>
+                    </li>
+                    @*<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Teller Posting <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Post Transaction into Customer Account", "Create", "Customers")</li>
+                            <li>@Html.ActionLink("View all Teller Postings", "Index", "Customers")</li>
+
+                            <li role="separator" class="divider"></li>
+                            <li></li>
+
+                        </ul>
+                    </li>*@
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Financial reports <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Profit and Loss Report", "Create", "Customers")</li>
+                            <li>@Html.ActionLink("Balance Sheet Report", "Index", "Customers")</li>
+                            <li>@Html.ActionLink("Trial Balance", "Index", "Customers")</li>
+
+                            <li role="separator" class="divider"></li>
+                            <li></li>
+
+                        </ul>
+                    </li>
+
+
+
+
                 </ul>
+                
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

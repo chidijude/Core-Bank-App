@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Express.Core.Models.AccountConfiguration>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentCotIncomeGl.AccountName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentInterestExpenseGl.AccountName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentInterestPayableGl.AccountName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanInterestExpenseGl.AccountName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanInterestIncomeGl.AccountName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanInterestReceivableGl.AccountName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SavingsInterestExpenseGl.AccountName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SavingsInterestPayableGl.AccountName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsBusinessOpen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FinancialDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SavingsCreditInterestRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SavingsMinimumBalance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentCreditInterestRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentMinimumBalance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentCot)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanDebitInterestRate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentCotIncomeGl.AccountName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentInterestExpenseGl.AccountName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentInterestPayableGl.AccountName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoanInterestExpenseGl.AccountName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoanInterestIncomeGl.AccountName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoanInterestReceivableGl.AccountName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SavingsInterestExpenseGl.AccountName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SavingsInterestPayableGl.AccountName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsBusinessOpen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FinancialDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SavingsCreditInterestRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SavingsMinimumBalance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentCreditInterestRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentMinimumBalance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentCot)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoanDebitInterestRate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

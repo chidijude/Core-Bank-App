@@ -1,0 +1,238 @@
+﻿@model Express.Core.Models.AccountConfiguration
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+<h4>Account Configuration</h4>
+<hr />
+<dl class="dl-horizontal">
+
+    <dt>
+        @Html.DisplayNameFor(model => model.IsBusinessOpen)
+    </dt>
+
+    <dd>
+        @if (Model.IsBusinessOpen)
+        {
+            @Html.DisplayName("Open")
+        }
+        else
+        {
+            @Html.DisplayName("Closed")
+        }
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.FinancialDate)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.FinancialDate)
+    </dd>
+</dl>
+<hr />
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="background-color:white; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size:large">
+    @*<thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Age
+                </th>
+            </tr>
+        </thead>*@
+    <tbody>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.SavingsCreditInterestRate)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.SavingsCreditInterestRate)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.SavingsMinimumBalance)
+        </td>
+
+        <td>
+            N @Model.SavingsMinimumBalance.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayName("Savings Interest Expense GL Account")
+        </td>
+
+        <td>
+            @if (Model.SavingsInterestExpenseGl == null)
+            {
+                @Html.DisplayName("Not Configured")
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.SavingsInterestExpenseGl.AccountName)
+            }                   
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayName("Savings Interest Payable GL Account")
+        </td>
+
+        <td>
+            @if (Model.SavingsInterestPayableGl == null)
+            {
+                @Html.DisplayName("Not Configured")
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.SavingsInterestPayableGl.AccountName)
+            }                    
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.CurrentCreditInterestRate)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.CurrentCreditInterestRate)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.CurrentMinimumBalance)
+        </td>
+
+        <td>
+            @*@Html.DisplayFor(model => model.CurrentMinimumBalance)*@
+            N @Model.CurrentMinimumBalance.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.CurrentCot)
+        </td>
+
+        <td>
+            N @Model.CurrentCot.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayName("Current Cot Income GL Account")</td>
+        <td>@if (Model.CurrentCotIncomeGl == null)
+            {
+                @Html.DisplayName("Not Configured")
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.CurrentCotIncomeGl.AccountName)
+            }
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayName("Current Interest Expense GL Account")</td>
+        <td>
+            @if (Model.CurrentInterestExpenseGl == null)
+            {
+                @Html.DisplayName("Not Configured")
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.CurrentInterestExpenseGl.AccountName)
+            }                    
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayName("Current Interest Payable GL Account")</td>
+        <td>
+            @if (Model.CurrentInterestPayableGl == null)
+            {
+                @Html.DisplayName("Not Configured")
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.CurrentInterestPayableGl.AccountName)
+            }                    
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.LoanDebitInterestRate)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.LoanDebitInterestRate)
+        </td>
+    </tr>
+    <tr>
+        @*<td>@Html.DisplayName("Loan Interest Expense GL Account")</td>
+        <td>
+            @if (Model.LoanInterestExpenseGl == null)
+            {
+                @Html.DisplayName("Not Configured")
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.LoanInterestExpenseGl.AccountName)
+            }
+        </td>*@
+    </tr>
+    <tr>
+        <td>@Html.DisplayName("Loan Interest Income GL Account")</td>
+        <td>
+            @if (Model.LoanInterestIncomeGl == null)
+            {
+                @Html.DisplayName("Not Configured")
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.LoanInterestIncomeGl.AccountName)
+            }                    
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayName("Loan Interest Receivable GL Account")
+        </td>
+
+        <td>
+            @if (Model.LoanInterestReceivableGl == null)
+            {
+                @Html.DisplayName("Not Configured")
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.LoanInterestReceivableGl.AccountName)
+            }                   
+        </td>
+    </tr>
+    </tbody>
+</table>
+    
+</div>
+<p>
+    
+
+</p>
+<p>
+   @Html.ActionLink("Edit All", "Edit", new{}, new {@class="btn btn-success"}) 
+   @Html.ActionLink("Edit Saving", "EditSavings", new{}, new {@class="btn btn-success"})
+   @Html.ActionLink("Edit Current", "EditCurrent", new{}, new {@class="btn btn-success"})
+  @Html.ActionLink("Edit Loan", "EditLoan", new{}, new {@class="btn btn-success"})
+</p>

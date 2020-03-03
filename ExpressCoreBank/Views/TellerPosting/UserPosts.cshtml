@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Express.Core.Models.TellerPosting>
+@using ExpressCoreBank.Models;
+@{
+    ViewBag.Title = "Index";
+    ApplicationDbContext db = new ApplicationDbContext();
+}
+
+<h2>Your Teller Postings</h2>
+
+<p>
+    @Html.ActionLink("Post New", "SelectAccount")
+</p>
+<table class="table table-bordered table-striped" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerAccount.AccountName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerAccount.AccountNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Narration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostingType)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.PostInitiatorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </t*@h>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerAccount.AccountName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerAccount.AccountNumber)
+            </td>
+            <td>
+                N @item.Amount.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Narration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostingType)
+            </td>
+            @*<td>*@
+                @*@Html.DisplayFor(modelItem => item.PostInitiatorId)*@
+                @*@{
+                    var name = db.Users.Find(item.PostInitiatorId).UserName;
+                }
+                @name
+            </td>*@
+            @*@if (item.Status == PostStatus.Approved)
+            {
+                <td class="text-success">
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+            }
+            @if (item.Status == PostStatus.Declined)
+            {
+                <td class="text-danger">
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+            }
+            @if (item.Status == PostStatus.Pending)
+            {
+                <td class="text-warning">
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+            }*@
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.ID }, new {@class="btn btn-success"})
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID }, new {@class="btn btn-success"})
+            </td>
+        </tr>
+                    }
+</tbody>
+
+</table>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ExpressCoreBank.Models.Customer>
+
+@{
+    ViewBag.Title = "SelectCustomerAccount";
+}
+
+<h2>Select Customer Account</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table table-striped table-bordered" id="dataTable">
+    <thead>
+        <tr>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.CustId)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+           
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.CustId)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            
+            <td>@Html.ActionLink("Create Saving", "CreateSavings", new { id = item.ID }, new {@class="btn btn-success "})</td>
+            <td>@Html.ActionLink("Create Current", "CreateCurrent", new { id = item.ID }, new {@class="btn btn-success "})</td>
+            <td>@Html.ActionLink("Create Loan", "CreateLoan", new { id = item.ID }, new {@class="btn btn-success "})</td>
+        </tr>
+    }
+</tbody>
+
+</table>

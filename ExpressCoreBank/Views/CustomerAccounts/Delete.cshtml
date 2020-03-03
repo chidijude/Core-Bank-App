@@ -1,0 +1,184 @@
+﻿@model ExpressCoreBank.Models.CustomerAccount
+
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CustomerAccount</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Branch.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Branch.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServicingAccount.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServicingAccount.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountBalance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DaysCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DaysCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dailyInterestAccrued)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dailyInterestAccrued)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanInterestRatePerMonth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanInterestRatePerMonth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SavingsWithdrawalCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SavingsWithdrawalCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentLien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentLien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanMonthlyRepay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanMonthlyRepay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanMonthlyInterestRepay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanMonthlyInterestRepay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanMonthlyPrincipalRepay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanMonthlyPrincipalRepay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanPrincipalRemaining)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanPrincipalRemaining)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TermsOfLoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TermsOfLoan)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        
+            <input type="submit" value="Delete" class="btn btn-success" /> 
+            @Html.ActionLink("Back", "Index",new { }, new { @class = "btn btn-success" })
+       
+    }
+</div>

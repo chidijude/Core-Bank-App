@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Express.Core.Models;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ExpressCoreBank.Models

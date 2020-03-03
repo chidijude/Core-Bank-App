@@ -49,11 +49,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\AccountType.cs" />
+    <Compile Include="Models\AccountConfiguration.cs" />
+    <Compile Include="Models\Branch.cs" />
+    <Compile Include="Models\Claim.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerAccount.cs" />
+    <Compile Include="Models\ExpenseIncomeEntry.cs" />
+    <Compile Include="Models\GlAccount.cs" />
+    <Compile Include="Models\GlCategory.cs" />
+    <Compile Include="Models\GlPosting.cs" />
+    <Compile Include="Models\GlToAuth.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\RoleClaim.cs" />
+    <Compile Include="Models\TellerPosting.cs" />
+    <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\CustomerAccountViewModel.cs" />
+    <Compile Include="ViewModels\ClaimsViewModel.cs" />
+    <Compile Include="ViewModels\CustomerAccountViewModel\CreateAccountViewModel.cs" />
+    <Compile Include="ViewModels\CustomerAccountViewModel\CreateLoanAccountViewModel.cs" />
+    <Compile Include="ViewModels\FinancialReportViewModel\LiabilityViewModel.cs" />
+    <Compile Include="ViewModels\FinancialReportViewModel\TrialBalanceViewModel.cs" />
+    <Compile Include="ViewModels\TillToUserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

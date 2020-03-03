@@ -1,0 +1,58 @@
+﻿@model Express.Core.Models.GlAccount
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>GlAccount</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Branch.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Branch.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GlCategory.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GlCategory.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodeNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodeNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountBalance)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button class="btn btn-default">@Html.ActionLink("Edit", "Edit", new { id = Model.ID })</button> |
+    <button class="btn btn-success">@Html.ActionLink("Back", "Index")</button>
+</p>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Express.Core.ViewModels.TillToUserViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All Tellers</h2>
+
+<p>
+    @Html.ActionLink("Assign Till To Teller", "Create")
+</p>
+<table class="table table-bordered table-striped" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GLAccountName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountBalance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GLAccountName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountBalance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @if (item.HasDetails)
+                {
+                     @Html.ActionLink("Details", "Details", new { id = item.Id }, new {@class="btn btn-success"})
+                    @*<button> @Html.ActionLink("Edit", "Edit", new { id = item.Id })</button>*@
+                }
+                @if (item.IsDeletable)
+                {
+                    <label>  </label>
+                     @Html.ActionLink("Delete Association", "Delete", new { id = item.Id }, new {@class="btn btn-success"})
+                }
+            </td>
+        </tr>
+    }
+</tbody>
+
+</table>

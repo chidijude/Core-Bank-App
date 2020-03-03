@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Express.Core.Models.GlAccount>
+
+@{
+    ViewBag.Title = "SelectFirstAccount";
+}
+
+<h2>Select Account To Credit</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table table-bordered table-striped" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodeNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountBalance)
+            </th>
+            <th>
+                @Html.DisplayName("Category")
+            </th>
+            <th>
+                @Html.DisplayName("Branch")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodeNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountBalance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GlCategory.Name)
+                @{
+                    var mainCat = item.GlCategory.MainCategory;
+                }
+                @if (mainCat == Express.Core.Models.MainGlCategory.Asset || mainCat ==Express.Core.Models.MainGlCategory.Expenses)
+                {
+                    <label> (Balance) - </label>
+                }
+                else
+                {
+                    <label> (Balance) + </label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Branch.Name)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+        @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
+                <button> @Html.ActionLink("Select Account", "SelectSecondAccount", new { id = item.ID })</button>
+            </td>
+        </tr>
+                    }
+</tbody>
+
+</table>

@@ -1,0 +1,152 @@
+﻿@model Express.Core.Models.AccountConfiguration
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>AccountConfiguration</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentCotIncomeGl.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentCotIncomeGl.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentInterestExpenseGl.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentInterestExpenseGl.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentInterestPayableGl.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentInterestPayableGl.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanInterestExpenseGl.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanInterestExpenseGl.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanInterestIncomeGl.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanInterestIncomeGl.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanInterestReceivableGl.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanInterestReceivableGl.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SavingsInterestExpenseGl.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SavingsInterestExpenseGl.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SavingsInterestPayableGl.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SavingsInterestPayableGl.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsBusinessOpen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsBusinessOpen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinancialDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinancialDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SavingsCreditInterestRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SavingsCreditInterestRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SavingsMinimumBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SavingsMinimumBalance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentCreditInterestRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentCreditInterestRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentMinimumBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentMinimumBalance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentCot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentCot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanDebitInterestRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanDebitInterestRate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

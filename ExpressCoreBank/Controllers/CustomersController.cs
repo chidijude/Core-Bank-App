@@ -47,7 +47,7 @@ namespace ExpressCoreBank.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Branch,Gender,Address,Phone,Email")] Customer customer)
+        public async Task<ActionResult> Create([Bind(Include = "ID,Name,Gender,Address,Phone,Email")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace ExpressCoreBank.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Branch,Gender,Address,Phone,Email")] Customer customer)
+        public async Task<ActionResult> Edit([Bind(Include = "ID,Name,Gender,Address,Phone,Email")] Customer customer)
         {
             if (ModelState.IsValid)
             {

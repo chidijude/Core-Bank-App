@@ -1,0 +1,188 @@
+﻿@model ExpressCoreBank.Models.CustomerAccount
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer Account</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Branch")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Branch.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountBalance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dailyInterestAccrued)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dailyInterestAccrued)
+        </dd>
+
+        @if (Model.AccountType == ExpressCoreBank.Models.AccountType.Savings)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.SavingsWithdrawalCount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SavingsWithdrawalCount)
+            </dd>
+
+        }
+
+        @if (Model.AccountType == ExpressCoreBank.Models.AccountType.Current)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.CurrentLien)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CurrentLien)
+            </dd>
+        }
+
+        @if (Model.AccountType == ExpressCoreBank.Models.AccountType.Loan)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.TermsOfLoan)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TermsOfLoan)
+            </dd>
+
+            <dt>
+                @Html.DisplayName("Servicing Account")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ServicingAccount.AccountName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DaysCount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DaysCount)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LoanInterestRatePerMonth)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LoanInterestRatePerMonth)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LoanAmount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LoanAmount)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LoanMonthlyRepay)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LoanMonthlyRepay)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LoanMonthlyInterestRepay)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LoanMonthlyInterestRepay)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LoanMonthlyPrincipalRepay)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LoanMonthlyPrincipalRepay)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LoanPrincipalRemaining)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LoanPrincipalRemaining)
+            </dd>
+        }       
+         
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" })
+    @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-success" })
+</p>

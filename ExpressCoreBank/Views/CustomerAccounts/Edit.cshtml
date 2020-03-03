@@ -1,0 +1,74 @@
+﻿@model ExpressCoreBank.Models.CustomerAccount
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Edit Customer Account</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.AccountNumber )
+        @Html.HiddenFor(model => model.AccountBalance)
+        @Html.HiddenFor(model => model.DateCreated)
+        @Html.HiddenFor(model => model.DaysCount)
+        @Html.HiddenFor(model => model.dailyInterestAccrued)
+        @Html.HiddenFor(model => model.LoanInterestRatePerMonth )
+        @Html.HiddenFor(model => model.AccountType )
+        @Html.HiddenFor(model => model.SavingsWithdrawalCount )
+        @Html.HiddenFor(model => model.CurrentLien )
+        @Html.HiddenFor(model => model.CustomerID )
+        @Html.HiddenFor(model => model.LoanAmount )
+        @Html.HiddenFor(model => model.LoanMonthlyRepay )
+        @Html.HiddenFor(model => model.LoanMonthlyInterestRepay )
+        @Html.HiddenFor(model => model.LoanMonthlyPrincipalRepay )
+        @Html.HiddenFor(model => model.LoanPrincipalRemaining )
+        @Html.HiddenFor(model => model.TermsOfLoan )
+        @Html.HiddenFor(model => model.ServicingAccountID )
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AccountName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AccountName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AccountName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BranchID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("BranchID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BranchID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AccountStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.AccountStatus, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AccountStatus, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

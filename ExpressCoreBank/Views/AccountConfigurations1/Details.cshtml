@@ -1,0 +1,146 @@
+﻿@model Express.Core.Models.AccountConfiguration
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AccountConfiguration</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentCotIncomeGl.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentCotIncomeGl.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentInterestExpenseGl.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentInterestExpenseGl.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentInterestPayableGl.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentInterestPayableGl.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanInterestExpenseGl.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanInterestExpenseGl.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanInterestIncomeGl.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanInterestIncomeGl.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanInterestReceivableGl.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanInterestReceivableGl.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SavingsInterestExpenseGl.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SavingsInterestExpenseGl.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SavingsInterestPayableGl.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SavingsInterestPayableGl.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsBusinessOpen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsBusinessOpen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinancialDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinancialDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SavingsCreditInterestRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SavingsCreditInterestRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SavingsMinimumBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SavingsMinimumBalance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentCreditInterestRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentCreditInterestRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentMinimumBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentMinimumBalance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentCot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentCot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanDebitInterestRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanDebitInterestRate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

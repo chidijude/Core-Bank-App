@@ -6,17 +6,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web;
-using ExpressLogic;
 using System.Web.Mvc;
 using ExpressCoreBank.Models;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using ExpressLogic;
+using Microsoft.AspNet.Identity;
 
 namespace ExpressCoreBank.Controllers
 {
     public class UsersController : Controller
     {
-        private ApplicationDbContext db;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -58,7 +58,8 @@ namespace ExpressCoreBank.Controllers
         // GET: Users
         public async Task<ActionResult> Index()
         {
-            return View(await db.Users.ToListAsync());
+            var users = db.Userrs.Include(u => u.Branch);
+            return View(await users.ToListAsync());
         }
 
         // GET: Users/Details/5
@@ -68,7 +69,7 @@ namespace ExpressCoreBank.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = await db.Users.FindAsync(id);
+            User user = await db.Userrs.FindAsync(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -79,6 +80,9 @@ namespace ExpressCoreBank.Controllers
         // GET: Users/Create
         public ActionResult Create()
         {
+            ViewBag.BranchId = new SelectList(db.Branches, "Id", "Name");
+            ViewBag.Roles = new SelectList(db.Roles, "ID", "Name");
+            
             return View();
         }
 
@@ -87,36 +91,49 @@ namespace ExpressCoreBank.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(User user)
+        public async Task<ActionResult> Create( User user)
         {
-            
+
+            ViewBag.BranchId = new SelectList(db.Branches, "Id", "Name");
+            ViewBag.Roles = new SelectList(db.Roles, "ID", "Name");
             if (ModelState.IsValid)
             {
-                var userr = new User { UserName = user.Email, Email = user.Email };//, PhoneNumber = user.PhoneNumber,
-                                                                                   // FirstName = user.FirstName, LastName = user.LastName, Branch = user.Branch};
+                var userr = new User { UserName = user.Email, Email = user.Email };
 
                 string pwd = Generator.genPassword();
-
                 var result = await UserManager.CreateAsync(user, pwd);
+
                 if (result.Succeeded)
                 {
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
 
-
+                    //message for email
                     string message = "login with your username " + user.UserName + " and your default password is " + pwd + "  using the link " + callbackUrl;
-                    MailService.SendEmail( message, user.Email);
-           
-                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">Here</a>");
+
+                    //MailService.SendEmail(message, user.Email);
+                    try
+                    {
+                        MailService.SendEmail(message, user.Email);
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("",$"Error while sending Mail : {ex.Message}. Your generated password is : {pwd}");
+                        //ViewBag.BranchId = new SelectList(db.Branches, "Id", "Name");
+                        //return View(user);
+                    }
+
 
                     //db.Users.Add(user);
                     //await db.SaveChangesAsync();
-                    return RedirectToAction("Index");
+                    
                 }
                 AddErrors(result);
+                return RedirectToAction("Index");
 
             }
 
+            ViewBag.BranchId = new SelectList(db.Branches, "Id", "Name", user.BranchId);
             return View(user);
         }
 
@@ -127,11 +144,12 @@ namespace ExpressCoreBank.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = await db.Users.FindAsync(id);
+            User user = await db.Userrs.FindAsync(id);
             if (user == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.BranchId = new SelectList(db.Branches, "Id", "Name", user.BranchId);
             return View(user);
         }
 
@@ -140,7 +158,7 @@ namespace ExpressCoreBank.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,FirstName,LastName,Branch")] User user)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,FirstName,LastName,BranchId")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -148,6 +166,7 @@ namespace ExpressCoreBank.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.BranchId = new SelectList(db.Branches, "Id", "Name", user.BranchId);
             return View(user);
         }
 
@@ -158,7 +177,7 @@ namespace ExpressCoreBank.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = await db.Users.FindAsync(id);
+            User user = await db.Userrs.FindAsync(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -171,33 +190,10 @@ namespace ExpressCoreBank.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
-            User user = await db.Users.FindAsync(id);
+            User user = await db.Userrs.FindAsync(id);
             db.Users.Remove(user);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (_userManager != null)
-                {
-                    _userManager.Dispose();
-                    _userManager = null;
-                }
-
-                if (_signInManager != null)
-                {
-                    _signInManager.Dispose();
-                    _signInManager = null;
-                }
-
-                db.Dispose();
-
-            }
-
-            base.Dispose(disposing);
         }
 
         private void AddErrors(IdentityResult result)
@@ -208,5 +204,18 @@ namespace ExpressCoreBank.Controllers
             }
         }
 
+        private void AddError(string error)
+        {
+            ModelState.AddModelError("", error);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

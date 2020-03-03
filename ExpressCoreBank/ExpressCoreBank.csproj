@@ -172,20 +172,63 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountConfigurationsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BranchesController.cs" />
+    <Compile Include="Controllers\CustomerAccountsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\GlAccountsController.cs" />
+    <Compile Include="Controllers\GlCategoriesController.cs" />
+    <Compile Include="Controllers\GlPostingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TellerPostingController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\UserTillsController.cs" />
+    <Compile Include="Data\Repositories\BalanceSheetRepository.cs" />
+    <Compile Include="Data\Repositories\BranchRepository.cs" />
+    <Compile Include="Data\Repositories\ConfigurationRepository.cs" />
+    <Compile Include="Data\Repositories\CustomerAccountRepository.cs" />
+    <Compile Include="Data\Repositories\CustomerRepository.cs" />
+    <Compile Include="Data\Repositories\GlAccountRepository.cs" />
+    <Compile Include="Data\Repositories\GlCategoryRepo.cs" />
+    <Compile Include="Data\Repositories\ProfitAndLossRepository.cs" />
+    <Compile Include="Data\Repositories\RoleRepository.cs" />
+    <Compile Include="Data\Repositories\TellerMgtRepository.cs" />
+    <Compile Include="Data\Repositories\TillUsers.cs" />
+    <Compile Include="Data\Repositories\TransactionRepository.cs" />
+    <Compile Include="Data\Repositories\UserRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202002271311260_Init.cs" />
-    <Compile Include="Migrations\202002271311260_Init.designer.cs">
-      <DependentUpon>202002271311260_Init.cs</DependentUpon>
+    <Compile Include="Logic\BalanceSheetLogic.cs" />
+    <Compile Include="Logic\BranchLogic.cs" />
+    <Compile Include="Logic\BusinessLogic.cs" />
+    <Compile Include="Logic\ConfigLogic.cs" />
+    <Compile Include="Logic\CustomerAccountLogic.cs" />
+    <Compile Include="Logic\CustomerLogic.cs" />
+    <Compile Include="Logic\EodLogic.cs" />
+    <Compile Include="Logic\FinancialReportLogic.cs" />
+    <Compile Include="Logic\Generator.cs" />
+    <Compile Include="Logic\GlAccountLogic.cs" />
+    <Compile Include="Logic\GlCategoryLogic.cs" />
+    <Compile Include="Logic\IBranchLogic.cs" />
+    <Compile Include="Logic\MailService.cs" />
+    <Compile Include="Logic\ProfitAndLossLogic.cs" />
+    <Compile Include="Logic\RoleLogic.cs" />
+    <Compile Include="Logic\TellerMgtLogic.cs" />
+    <Compile Include="Logic\TellerPostingLogic.cs" />
+    <Compile Include="Logic\TillToUser.cs" />
+    <Compile Include="Logic\TransactionLogic.cs" />
+    <Compile Include="Migrations\202003030147055_init.cs" />
+    <Compile Include="Migrations\202003030147055_init.designer.cs">
+      <DependentUpon>202003030147055_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\UserTill.cs" />
+    <Compile Include="Models\ViewModel\CreateUserViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\User.cs" />
@@ -193,17 +236,21 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-def.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap-def.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
     <None Include="Scripts\jquery-3.3.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -249,30 +296,84 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Customers\Create.cshtml" />
-    <Content Include="Views\Customers\Delete.cshtml" />
-    <Content Include="Views\Customers\Details.cshtml" />
-    <Content Include="Views\Customers\Edit.cshtml" />
-    <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\UserTills\NewFolder1\.cshtml" />
+    <Content Include="Views\UserTills\NewFolder1\Delete.cshtml" />
+    <Content Include="Views\UserTills\NewFolder1\Details.cshtml" />
+    <Content Include="Views\UserTills\NewFolder1\Edit.cshtml" />
+    <Content Include="Views\UserTills\NewFolder1\Index.cshtml" />
+    <Content Include="Views\GlCategories\Create.cshtml" />
+    <Content Include="Views\GlCategories\Delete.cshtml" />
+    <Content Include="Views\GlCategories\Details.cshtml" />
+    <Content Include="Views\GlCategories\Edit.cshtml" />
+    <Content Include="Views\GlCategories\Index.cshtml" />
+    <Content Include="Views\AccountConfigurations\Delete.cshtml" />
+    <Content Include="Views\AccountConfigurations\Details.cshtml" />
+    <Content Include="Views\AccountConfigurations\Edit.cshtml" />
+    <Content Include="Views\AccountConfigurations\EditCurrent.cshtml" />
+    <Content Include="Views\AccountConfigurations\EditLoan.cshtml" />
+    <Content Include="Views\AccountConfigurations\EditSavings.cshtml" />
+    <Content Include="Views\AccountConfigurations\Create.cshtml" />
+    <Content Include="Views\UserTills\Create.cshtml" />
+    <Content Include="Views\UserTills\Delete.cshtml" />
+    <Content Include="Views\UserTills\Details.cshtml" />
+    <Content Include="Views\UserTills\Edit.cshtml" />
+    <Content Include="Views\UserTills\Index.cshtml" />
+    <Content Include="Views\GlAccounts\Create.cshtml" />
+    <Content Include="Views\GlAccounts\Delete.cshtml" />
+    <Content Include="Views\GlAccounts\Details.cshtml" />
+    <Content Include="Views\GlAccounts\Edit.cshtml" />
+    <Content Include="Views\GlAccounts\Index.cshtml" />
+    <Content Include="Views\Branches\Create.cshtml" />
+    <Content Include="Views\Branches\Delete.cshtml" />
+    <Content Include="Views\Branches\Details.cshtml" />
+    <Content Include="Views\Branches\Edit.cshtml" />
+    <Content Include="Views\Branches\Index.cshtml" />
+    <Content Include="Views\CustomerAccounts\CreateCurrent.cshtml" />
+    <Content Include="Views\CustomerAccounts\CreateLoan.cshtml" />
+    <Content Include="Views\CustomerAccounts\CreateSavings.cshtml" />
+    <Content Include="Views\CustomerAccounts\Delete.cshtml" />
+    <Content Include="Views\CustomerAccounts\Details.cshtml" />
+    <Content Include="Views\CustomerAccounts\Edit.cshtml" />
+    <Content Include="Views\CustomerAccounts\Index.cshtml" />
+    <Content Include="Views\CustomerAccounts\SelectCustomerAccount.cshtml" />
+    <Content Include="Views\GlPosting\Create.cshtml" />
+    <Content Include="Views\GlPosting\Delete.cshtml" />
+    <Content Include="Views\GlPosting\Details.cshtml" />
+    <Content Include="Views\GlPosting\Edit.cshtml" />
+    <Content Include="Views\GlPosting\EODnotRUN.cshtml" />
+    <Content Include="Views\GlPosting\Index.cshtml" />
+    <Content Include="Views\GlPosting\SelectFirstAccount.cshtml" />
+    <Content Include="Views\GlPosting\SelectSecondAccount.cshtml" />
+    <Content Include="Views\GlPosting\UserPosts.cshtml" />
+    <Content Include="Views\TellerPosting\Create.cshtml" />
+    <Content Include="Views\TellerPosting\Delete.cshtml" />
+    <Content Include="Views\TellerPosting\Details.cshtml" />
+    <Content Include="Views\TellerPosting\Edit.cshtml" />
+    <Content Include="Views\TellerPosting\EODnotRUN.cshtml" />
+    <Content Include="Views\TellerPosting\Index.cshtml" />
+    <Content Include="Views\TellerPosting\SelectAccount.cshtml" />
+    <Content Include="Views\TellerPosting\UserPosts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Accesories\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Core\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
@@ -292,8 +393,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202002271311260_Init.resx">
-      <DependentUpon>202002271311260_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003030147055_init.resx">
+      <DependentUpon>202003030147055_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

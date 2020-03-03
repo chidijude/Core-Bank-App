@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Express.Core.Models.GlAccount>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>GL Accounts</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped table-bordered" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                
+                @Html.DisplayName("Branch")
+            </th>
+            <th>
+                
+                @Html.DisplayName("GL Category")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodeNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountBalance)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Branch.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GlCategory.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodeNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountBalance)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-default " })
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-info " })
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger " })*@
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
