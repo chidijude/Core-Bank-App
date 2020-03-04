@@ -1,0 +1,162 @@
+﻿@{
+    ViewBag.Title = "BalanceSheet";
+}
+
+<div id="page-wrapper">
+    <h1 class="text-center" style="color:darkcyan">Balance Sheet (JUCBA)</h1>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                Account
+            </th>
+            <th>
+                Amount
+            </th>
+        </tr>
+        <tr>
+            <td style="background-color: darkcyan;  border: 1px solid black;"><b style="color:white">Asset</b></td>
+            <td style="background-color: darkcyan;  border: 1px solid black;"><b style="color:white">N</b></td>
+        </tr>
+        @foreach (var item in ViewBag.Assets as List<Express.Core.Models.GlAccount>)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountName)
+                </td>
+                <td>
+                    @item.AccountBalance.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+                </td>
+            </tr>
+        }
+        <tr>
+            <th style="background-color: darkslategrey;  border: 1px solid black;"><b style="color:white">Total</b></th>
+            <th style="background-color: darkslategrey;  border: 1px solid black;"><b style="color:white">@ViewBag.AssetSum.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</b></th>
+        </tr>
+        <tr></tr></table>
+        
+        
+        @*<div>
+            <table class="col-md-6 table-bordered" style="float: left">
+                <tr>
+                    <th>
+                        Account
+                    </th>
+                    <th>
+                        Amount
+                    </th>
+                </tr>
+                <tr>
+                    <td style="background-color:cadetblue;  border: 1px solid black; line-height: 200%"><b style="color: black">Income</b></td>
+                    <td style="background-color: cadetblue;  border: 1px solid black; line-height: 200%"><b style="color: black">N</b></td>
+                </tr>
+                @foreach (var item in ViewBag.Income as List<JUCBA.Core.Models.GlAccount>)
+                {
+                    <tr>
+                        <td style="line-height: 250%">
+                            @Html.DisplayFor(modelItem => item.AccountName)
+                        </td>
+                        <td style="line-height: 250%">
+                            @item.AccountBalance.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+                        </td>
+                    </tr>
+                }
+            </table>
+            <table class="col-md-6 table-bordered" style="float: right">
+                <tr>
+                    <th>
+                        Account
+                    </th>
+                    <th>
+                        Amount
+                    </th>
+                </tr>
+                <tr>
+                    <td style="background-color:darkseagreen; border: 1px solid black; line-height: 200%"><b style="color:black">Expense</b></td>
+                    <td style="background-color: darkseagreen;  border: 1px solid black; line-height: 200%"><b style="color:black">N</b></td>
+                </tr>
+                @foreach (var item in ViewBag.Expense as List<JUCBA.Core.Models.GlAccount>)
+                {
+                    <tr>
+                        <td style="line-height: 250%">
+                            @Html.DisplayFor(modelItem => item.AccountName)
+                        </td>
+                        <td style="line-height: 250%">
+                            @item.AccountBalance.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>*@
+        
+        
+
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                Account
+            </th>
+            <th>
+                Amount
+            </th>
+        </tr>
+       
+        <tr>
+            <td style="background-color: darkcyan;  border: 1px solid black;"><b style="color: white">Capital (income - Expense)</b></td>
+            <td style="background-color: darkcyan;  border: 1px solid black;"><b style="color: white">N</b></td>
+        </tr>
+        @foreach (var item in ViewBag.Capitals as List<Express.Core.Models.GlAccount>)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountName)
+                </td>
+                <td>
+                    @item.AccountBalance.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+                </td>
+            </tr>
+        }
+        <tr>
+            <th>Total</th>
+            <th>
+                @ViewBag.CapitalSum.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+            </th>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td style="background-color:darkcyan;  border: 1px solid black;"><b style="color:white">Liability</b></td>
+            <td style="background-color: darkcyan;  border: 1px solid black;"><b style="color:white">N</b></td>
+        </tr>
+        @*@if (ViewBag.Capitals != null)
+            {
+
+            }*@
+        @foreach (var item in ViewBag.Liability as List<JUCBA.Core.ViewModels.FinancialReportViewModel.LiabilityViewModel>)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountName)
+                </td>
+                <td>
+                    @item.Amount.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+                </td>
+            </tr>
+        }
+        <tr>
+            <th>Total</th>
+            @{
+                decimal ltotal = (decimal)ViewBag.LiabilitySum;
+                <th>@ltotal.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
+            }
+        </tr>
+        <tr><th></th></tr>
+        <tr>
+            <th style="background-color: darkslategrey;  border: 2px solid black;"><b style="color:white">Capital + Liability</b></th>
+            @{
+                decimal total = (decimal)ViewBag.CapitalSum + (decimal)ViewBag.LiabilitySum;
+                <th style="background-color: darkslategrey;  border: 2px solid black;"><b style="color:white">@total.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</b></th>
+            }
+            @*<th>@((decimal)ViewBag.CapitalSum + (decimal)ViewBag.LiabilitySum)</th>*@
+        </tr>
+    </table>
+</div>

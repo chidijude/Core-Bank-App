@@ -78,6 +78,7 @@ namespace ExpressCoreBank.Controllers
         }
 
         // GET: Users/Create
+        [AllowAnonymous]
         public ActionResult Create()
         {
             ViewBag.BranchId = new SelectList(db.Branches, "Id", "Name");
@@ -90,6 +91,7 @@ namespace ExpressCoreBank.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create( User user)
         {

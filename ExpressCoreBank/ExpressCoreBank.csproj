@@ -177,6 +177,7 @@
     <Compile Include="Controllers\BranchesController.cs" />
     <Compile Include="Controllers\CustomerAccountsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\FinancialReportsController.cs" />
     <Compile Include="Controllers\GlAccountsController.cs" />
     <Compile Include="Controllers\GlCategoriesController.cs" />
     <Compile Include="Controllers\GlPostingController.cs" />
@@ -363,6 +364,9 @@
     <Content Include="Views\TellerPosting\Index.cshtml" />
     <Content Include="Views\TellerPosting\SelectAccount.cshtml" />
     <Content Include="Views\TellerPosting\UserPosts.cshtml" />
+    <Content Include="Views\FinancialReports\BalanceSheet.cshtml" />
+    <Content Include="Views\FinancialReports\ProfitAndLoss.cshtml" />
+    <Content Include="Views\FinancialReports\TrialBalance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Accesories\" />

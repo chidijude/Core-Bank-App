@@ -9,7 +9,10 @@
 <h2>GL Postings</h2>
 
 <p>
-    @Html.ActionLink("Post New", "SelectFirstAccount")
+    <button class="btn bt-success">
+        @Html.ActionLink("Post New", "SelectFirstAccount")
+    </button>
+   
 </p>
 <table class="table table-bordered table-striped" id="dataTable">
     <thead>
@@ -41,9 +44,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.PostInitiatorId)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Status)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -83,12 +86,12 @@
                 }
                 @name
             </td>
-            <td class="text-success">
+            @*<td class="text-success">
                 @Html.DisplayFor(modelItem => item.Status)
-            </td>
+            </td>*@
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.ID }, new {@class="btn btn-success "})
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new {@class="btn btn-success "})
+                @Html.ActionLink("Details", "Details", new { id = item.ID }, new {@class="btn btn-default "})
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new {@class="btn btn-danger "})
             </td>
         </tr>
                     }

@@ -9,6 +9,7 @@ using System.Net;
 using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace ExpressCoreBank.Controllers
 {
@@ -18,15 +19,16 @@ namespace ExpressCoreBank.Controllers
         
             private ApplicationDbContext db = new ApplicationDbContext();
 
-            BusinessLogic busLogic = new BusinessLogic();
+            BusinessLogic busLogic = new BusinessLogic();  
             FinancialReportLogic reportLogic = new FinancialReportLogic();
             EodLogic eodLogic = new EodLogic();
 
             // GET: GlPosting
-            /*public ActionResult Index()
+            public ActionResult Index()
             {
             var glPostings = db.GlPostings.Include(g => g.CrGlAccount).Include(g => g.DrGlAccount).Where(g => g.Status == PostStatus.Approved);
-                return View(glPostings.ToList());
+            
+            return View(glPostings.ToList());
             }
 
             public ActionResult UserPosts()
@@ -35,7 +37,7 @@ namespace ExpressCoreBank.Controllers
                 var userGlPostings = db.GlPostings.Include(g => g.CrGlAccount).Include(g => g.DrGlAccount).Where(g => g.PostInitiatorId.Equals(userId));
                 //return View("Index", userGlPostings.ToList());
                 return View(userGlPostings.ToList());
-            }*/
+            }
 
             // GET: GlPosting/Details/5
             public ActionResult Details(int? id)
@@ -54,14 +56,14 @@ namespace ExpressCoreBank.Controllers
 
             public ActionResult SelectFirstAccount()
             {
-                if (eodLogic.isBusinessClosed())
+                /*if (eodLogic.isBusinessClosed())
                 {
 
                     //return a non-populated select credit acct view
                     //return View(new List<GlAccount>());
                     // return a view(partial view ? ) saying that business is closed
                     return View("EODnotRUN");
-                }
+                }*/
                 //db.GlAccounts.Include(g => g.GlCategory).Include(g => g.Branch).ToList()
                 return View(db.GlAccounts.ToList());
             }
@@ -114,12 +116,12 @@ namespace ExpressCoreBank.Controllers
             [ValidateAntiForgeryToken]
             public ActionResult Create([Bind(Include = "ID,CreditAmount,DebitAmount,Narration,DrGlAccountID,CrGlAccountID")] GlPosting glPosting)
             {
-                if (eodLogic.isBusinessClosed())
+                /*if (eodLogic.isBusinessClosed())
                 {
                     // return business closed view , for now use model error.
                     AddError("Sorry, business closed");
                     return View(glPosting);
-                }
+                }*/
 
                 if (ModelState.IsValid)
                 {
@@ -140,7 +142,7 @@ namespace ExpressCoreBank.Controllers
                         glPosting.PostInitiatorId = GetLoggedInUserId();
                         glPosting.Date = DateTime.Now;
 
-                        glPosting.Status = PostStatus.Pending;
+                        //glPosting.Status = PostStatus.Pending;
 
                         db.GlPostings.Add(glPosting);
                         db.SaveChanges();

@@ -135,25 +135,25 @@ namespace ExpressCoreBank.Controllers
                                 return View(tellerPosting);
                             }
 
-                            tellerPosting.Status = PostStatus.Pending;
-                            db.TellerPostings.Add(tellerPosting);
-                            db.SaveChanges();
-
-                            //all this is happening after transaction is approved by checker.
-                            //string result = telPostLogic.PostTeller(custAct, tillAct, amt, TellerPostingType.Withdrawal);
-                            //if (!result.Equals("success"))
-                            //{
-                            //    AddError(result);
-                            //    return View(tellerPosting);
-                            //}
-
-                            //db.Entry(custAct).State = EntityState.Modified;
-                            //db.Entry(tillAct).State = EntityState.Modified;
+                            tellerPosting.Status = PostStatus.Approved;
                             //db.TellerPostings.Add(tellerPosting);
                             //db.SaveChanges();
 
-                            //reportLogic.CreateTransaction(tillAct, amt, TransactionType.Credit);
-                            //reportLogic.CreateTransaction(custAct, amt, TransactionType.Debit);
+                            //all this is happening after transaction is approved by checker.
+                            string result = telPostLogic.PostTeller(custAct, tillAct, amt, TellerPostingType.Withdrawal);
+                            if (!result.Equals("success"))
+                            {
+                               AddError(result);
+                                return View(tellerPosting);
+                            }
+
+                            db.Entry(custAct).State = EntityState.Modified;
+                            db.Entry(tillAct).State = EntityState.Modified;
+                            db.TellerPostings.Add(tellerPosting);
+                            db.SaveChanges();
+
+                            reportLogic.CreateTransaction(tillAct, amt, TransactionType.Credit);
+                            reportLogic.CreateTransaction(custAct, amt, TransactionType.Debit);
 
                             return RedirectToAction("UserPosts"); // suceess partial view or pop-up ?
                         }
@@ -165,24 +165,24 @@ namespace ExpressCoreBank.Controllers
                     }
                     else
                     {
-                        tellerPosting.Status = PostStatus.Pending;
-                        db.TellerPostings.Add(tellerPosting);
-                        db.SaveChanges();
-
-                        //string result = telPostLogic.PostTeller(custAct, tillAct, amt, TellerPostingType.Deposit);
-                        //if (!result.Equals("success"))
-                        //{
-                        //    AddError(result);
-                        //    return View(tellerPosting);
-                        //}
-
-                        //db.Entry(custAct).State = EntityState.Modified;
-                        //db.Entry(tillAct).State = EntityState.Modified;
+                        tellerPosting.Status = PostStatus.Approved;
                         //db.TellerPostings.Add(tellerPosting);
                         //db.SaveChanges();
 
-                        //reportLogic.CreateTransaction(tillAct, amt, TransactionType.Debit);
-                        //reportLogic.CreateTransaction(custAct, amt, TransactionType.Credit);
+                        string result = telPostLogic.PostTeller(custAct, tillAct, amt, TellerPostingType.Deposit);
+                        if (!result.Equals("success"))
+                        {
+                            AddError(result);
+                           return View(tellerPosting);
+                        }
+
+                        db.Entry(custAct).State = EntityState.Modified;
+                        db.Entry(tillAct).State = EntityState.Modified;
+                        db.TellerPostings.Add(tellerPosting);
+                        db.SaveChanges();
+
+                        reportLogic.CreateTransaction(tillAct, amt, TransactionType.Debit);
+                        reportLogic.CreateTransaction(custAct, amt, TransactionType.Credit);
 
                         return RedirectToAction("UserPosts");
                     }

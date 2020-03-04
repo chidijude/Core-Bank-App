@@ -40,7 +40,7 @@ namespace Express.Core.Models
         public int? CrGlAccountID { get; set; }
         public virtual GlAccount CrGlAccount { get; set; }
 
-        [Display(Name = "Post Initiator")]
+        [Display(Name = "Poster")]
         public string PostInitiatorId { get; set; }
 
         [Display(Name = "Post Status")]

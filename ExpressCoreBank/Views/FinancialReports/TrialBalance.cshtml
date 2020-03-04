@@ -1,0 +1,92 @@
+﻿@using JUCBA.Core.Models
+@model IEnumerable<JUCBA.Core.ViewModels.FinancialReportViewModel.TrialBalanceViewModel>
+@{
+    ViewBag.Title = "TrialBalance";
+}
+
+    <div id="page-wrapper">
+        <h1 class="text-center text-black-50"> <b style="color:black">Trial Balance (JUCBA)</b></h1>
+        <center>  <h2>                       </h2></center>
+
+        @using (Html.BeginForm())
+        {
+            <p class="text-black-50 text-center">
+                Start: <input type="date" name="date1" class="col-md-5" style="left: auto" /> End: <input type="date" name="date2" class="col-md-5" style="right: auto" />
+                <input type="submit" value="Retrieve" />
+            </p>
+        }
+
+        <br />
+        <table class="table table-bordered">
+            <tr>
+                <th style="background-color: darkslategrey;  border: 1px solid whitesmoke;"><b style="color:white">
+             Category
+            </b></th>
+                <th style="background-color: darkslategrey;  border: 1px solid whitesmoke;"><b style="color:white">
+    Sub Category
+</b></th>
+                <th style="background-color: darkslategrey;  border: 1px solid whitesmoke;"><b style="color:white">
+    Account Name
+</b></th>
+                <th style="background-color: darkslategrey;  border: 1px solid whitesmoke;"><b style="color:white">
+    Debit
+</b></th>
+                <th style="background-color: darkslategrey;  border: 1px solid whitesmoke;"><b style="color:white">
+    Credit
+</b></th>
+                <th style="background-color: darkolivegreen;  border: 1px solid whitesmoke;"><b style="color:white">
+    Balance
+</b></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                var res = 0m;
+                <tr>
+                    <td style=" border: 1px solid black;">
+                        @Html.DisplayFor(modelItem => item.MainCategory)
+                    </td>
+                    <td style=" border: 1px solid black;">
+                        @Html.DisplayFor(modelItem => item.SubCategory)
+                    </td>
+                    <td style=" border: 1px solid black;">
+                        @Html.DisplayFor(modelItem => item.AccountName)
+                    </td>
+                    <td style=" border: 1px solid black;">
+                        N @item.TotalDebit.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+                    </td>
+                    <td style=" border: 1px solid black;">
+                        N @item.TotalCredit.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+                    </td>
+                    <td style=" border: 1px solid black;">
+                        N
+                        @if (item.MainCategory == "Liability" || item.MainCategory == "Income" || item.MainCategory == "Capital" || item.SubCategory.Contains("Customer's Loan Account"))
+                        {
+                            res = item.TotalCredit - item.TotalDebit;
+                        }
+                        else
+                        {
+                            res = item.TotalDebit - item.TotalCredit;
+                        }
+                        @res.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+                    </td>
+                </tr>
+            }
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th style="background-color:darkslategrey"><b style="color:white">Total</b></th>
+                <th style="background-color:darkslategrey"></th>
+                <th style="background-color:darkslategrey"></th>
+                <th style="background-color: darkslategrey; border-radius: 20px"><b style="color:white">N @ViewBag.TotalDebit.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</b></th>
+                <th style="background-color: darkslategrey; border-radius: 20px"><b style="color:white">N @ViewBag.TotalCredit.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</b> </th>
+                <th style="background-color:darkolivegreen"></th>
+            </tr>
+
+        </table>
+    </div>
+

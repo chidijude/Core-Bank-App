@@ -9,7 +9,7 @@
 <h2>GL Postings</h2>
 
 <p>
-    @Html.ActionLink("Post New", "SelectFirstAccount")
+    @Html.ActionLink("Post New", "SelectFirstAccount" , new { @class = "btn btn-success" })
 </p>
 <table class="table table-bordered table-striped" id="dataTable">
     <thead>
@@ -105,8 +105,8 @@
                 </td>
             }*@
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-success" })
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
             </td>
         </tr>
          }
