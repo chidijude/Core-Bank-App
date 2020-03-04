@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create New User</h2>
+
 <p>@ViewBag.ErrorMessage</p>
 
 
@@ -13,6 +13,7 @@
     @Html.AntiForgeryToken()
 
 <div class="jumbotron">
+    <h2>Create New User</h2>
     <div class="form-horizontal">
         <h4>User</h4>
         <hr />
@@ -85,9 +86,9 @@
 
 }
 
-<div>
+@*<div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div>*@
 @ViewBag.error
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

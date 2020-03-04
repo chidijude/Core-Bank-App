@@ -131,7 +131,7 @@ namespace ExpressCoreBank.Controllers
                     
                 }
                 AddErrors(result);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
 
             }
 
