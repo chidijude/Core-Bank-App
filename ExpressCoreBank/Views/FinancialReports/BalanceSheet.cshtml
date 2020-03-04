@@ -3,7 +3,7 @@
 }
 
 <div id="page-wrapper">
-    <h1 class="text-center" style="color:darkcyan">Balance Sheet (JUCBA)</h1>
+    <h1 class="text-center" style="color:darkcyan">Express Balance Sheet</h1>
 
     <table class="table table-bordered">
         <tr>
@@ -15,8 +15,8 @@
             </th>
         </tr>
         <tr>
-            <td style="background-color: darkcyan;  border: 1px solid black;"><b style="color:white">Asset</b></td>
-            <td style="background-color: darkcyan;  border: 1px solid black;"><b style="color:white">N</b></td>
+            <td style="  border: 2px solid black; text-align:center"><b style="color:black">Assets</b></td>
+            <td style=" border: 2px solid black; text-align:center"><b style="color:black">$</b></td>
         </tr>
         @foreach (var item in ViewBag.Assets as List<Express.Core.Models.GlAccount>)
         {
@@ -30,8 +30,8 @@
             </tr>
         }
         <tr>
-            <th style="background-color: darkslategrey;  border: 1px solid black;"><b style="color:white">Total</b></th>
-            <th style="background-color: darkslategrey;  border: 1px solid black;"><b style="color:white">@ViewBag.AssetSum.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</b></th>
+            <th style=" border: 2px solid black; text-align:center"><b style="color:black">Total</b></th>
+            <th style=";  border: 2px solid black; text-align:center"><b style="color:black">@ViewBag.AssetSum.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</b></th>
         </tr>
         <tr></tr></table>
         
@@ -102,8 +102,8 @@
         </tr>
        
         <tr>
-            <td style="background-color: darkcyan;  border: 1px solid black;"><b style="color: white">Capital (income - Expense)</b></td>
-            <td style="background-color: darkcyan;  border: 1px solid black;"><b style="color: white">N</b></td>
+            <td style=  "border: 2px solid black; text-align:center"><b>Capital (Income - Expense)</b></td>
+            <td style="border: 2px solid black; text-align:center"><b>$</b></td>
         </tr>
         @foreach (var item in ViewBag.Capitals as List<Express.Core.Models.GlAccount>)
         {
@@ -124,14 +124,14 @@
         </tr>
         <tr></tr>
         <tr>
-            <td style="background-color:darkcyan;  border: 1px solid black;"><b style="color:white">Liability</b></td>
-            <td style="background-color: darkcyan;  border: 1px solid black;"><b style="color:white">N</b></td>
+            <td style=" border: 2px solid black; text-align:center"><b>Liability</b></td>
+            <td style=" border: 2px solid black; text-align:center"><b>N</b></td>
         </tr>
         @*@if (ViewBag.Capitals != null)
             {
 
             }*@
-        @foreach (var item in ViewBag.Liability as List<JUCBA.Core.ViewModels.FinancialReportViewModel.LiabilityViewModel>)
+        @foreach (var item in ViewBag.Liability as List<Express.Core.ViewModels.FinancialReportViewModel.LiabilityViewModel>)
         {
             <tr>
                 <td>
@@ -151,12 +151,15 @@
         </tr>
         <tr><th></th></tr>
         <tr>
-            <th style="background-color: darkslategrey;  border: 2px solid black;"><b style="color:white">Capital + Liability</b></th>
+            <th style="  border: 2px solid black; text-align:center"><b>Capital + Liability</b></th>
             @{
                 decimal total = (decimal)ViewBag.CapitalSum + (decimal)ViewBag.LiabilitySum;
-                <th style="background-color: darkslategrey;  border: 2px solid black;"><b style="color:white">@total.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</b></th>
+                <th style="  border: 2px solid black;"><b>@total.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</b></th>
             }
             @*<th>@((decimal)ViewBag.CapitalSum + (decimal)ViewBag.LiabilitySum)</th>*@
         </tr>
     </table>
+    <h5>
+        Therefore Assets X Expenses = Capital X Income X Liability
+    </h5>
 </div>

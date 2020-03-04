@@ -4,20 +4,20 @@
 }
 
     <div id="page-wrapper">
-        <h1 class="text-center text-black-50"> <b style="color:black">Profit and Loss Statement (JUCBA)</b></h1>
+        <h1 class="text-center text-black-50"> <b style="color:black">Profit and Loss Statement</b></h1>
         <h3 class="text-center" style="color:black"><b>@ViewBag.TableTitle</b></h3>
         @using (Html.BeginForm())
         {
-            <p class="text-black-50 text-center">
+            @*<p class="text-black-50 text-center">
                 Start: <input type="date" name="date1" class="col-md-5" style="left: auto" /> End: <input type="date" name="date2" class="col-md-5" style="right: auto" />
                 <input type="submit" value="Retrieve" />
-            </p>
+            </p>*@
         }
         <br />
         <table class="col-md-5 table-bordered text-center" style="float: left;  line-height: 400%; border:1px solid black;">
             <tr>
-                <th style="background-color:darkslategrey"><b style="color:white">Income</b></th>
-                <th style="background-color:darkslategrey"><b style="color:white">Amount (N)</b></th>
+                <th>Income</th>
+                <th><b>Amount (N)</b></th>
             </tr>
             @foreach (var item in Model.Where(m => m.EntryType == Express.Core.Models.PandLType.Income))
             {
@@ -45,10 +45,10 @@
             <tr> <th></th><th> </th> </tr>
         </table>
 
-        <table class="col-md-5 table-bordered text-center" style="float: right; line-height: 400%;  border:1px solid black;">
+        <table class="col-md-5 table-bordered text-center" style="float: right; line-height: 400%;  border:2px solid black;">
             <tr>
-                <th style="background-color:darkolivegreen"><b style="color:white">Expenses</b></th>
-                <th style="background-color:darkolivegreen"><b style="color:white">Amount (N)</b></th>
+                <th><b>Expenses</b></th>
+                <th><b>Amount ($)</b></th>
             </tr>
             @foreach (var item in Model.Where(m => m.EntryType == Express.Core.Models.PandLType.Expenses))
             {
@@ -77,13 +77,16 @@
             <tr> <th></th><th> </th> </tr>
             <tr> <th></th><th> </th> </tr>
         </table>
+        <p></p>
+        <br />
+        <p></p>
         <center>
-            <table class="col-md-4 table-bordered text-center" style="line-height: 250%;  border:1px solid black;">
+            <table class="col-md-4 table-bordered text-center" style="line-height: 250%;  border:2px solid black;">
                 <tr>
-                    <th style="background-color:darkcyan"><b style="color:white">Profit/Loss</b></th>
+                    <th><b style="color:white">Profit/Loss</b></th>
                     @{
                         decimal p_L = (decimal)ViewBag.Profit;
-                        <th class="text-black-50" style="background-color:aquamarine"><b>@p_L.ToString("N02")</b></th>
+                        <th><b>@p_L.ToString("N02")</b></th>
                     }
 
                 </tr>
