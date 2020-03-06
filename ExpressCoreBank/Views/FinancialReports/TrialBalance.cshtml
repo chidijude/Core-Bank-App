@@ -40,13 +40,13 @@
                         @Html.DisplayFor(modelItem => item.AccountName)
                     </td>
                     <td style=" border: 2px solid black;">
-                        N @item.TotalDebit.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+                        $ @item.TotalDebit.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
                     </td>
                     <td style=" border: 2px solid black;">
-                        N @item.TotalCredit.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+                        $ @item.TotalCredit.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
                     </td>
                     <td style=" border: 2px solid black;">
-                        N
+                        $
                         @if (item.MainCategory == "Liability" || item.MainCategory == "Income" || item.MainCategory == "Capital" || item.SubCategory.Contains("Customer's Loan Account"))
                         {
                             res = item.TotalCredit - item.TotalDebit;

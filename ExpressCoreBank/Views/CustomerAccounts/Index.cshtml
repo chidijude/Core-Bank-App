@@ -84,7 +84,7 @@
                 @Html.DisplayFor(modelItem => item.AccountName)
             </td>
             <td>
-                N @item.AccountBalance.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+                $ @item.AccountBalance.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateCreated)

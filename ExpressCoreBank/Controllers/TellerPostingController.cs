@@ -170,6 +170,7 @@ namespace ExpressCoreBank.Controllers
                         //db.SaveChanges();
 
                         string result = telPostLogic.PostTeller(custAct, tillAct, amt, TellerPostingType.Deposit);
+                        custAct.AccountStatus = AccountStatus.Active;
                         if (!result.Equals("success"))
                         {
                             AddError(result);

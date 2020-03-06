@@ -52,7 +52,7 @@
                 @Html.DisplayFor(modelItem => item.CustomerAccount.AccountNumber)
             </td>
             <td>
-                N @item.Amount.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+                $ @item.Amount.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Narration)

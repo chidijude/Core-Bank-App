@@ -1,4 +1,4 @@
-﻿using ExpressCoreBank.Models;
+﻿ using ExpressCoreBank.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

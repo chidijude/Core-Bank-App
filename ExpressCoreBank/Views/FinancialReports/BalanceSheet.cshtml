@@ -7,10 +7,10 @@
 
     <table class="table table-bordered">
         <tr>
-            <th>
+            <th style="text-align: center">
                 Account
             </th>
-            <th>
+            <th style="text-align: center">
                 Amount
             </th>
         </tr>
@@ -21,10 +21,10 @@
         @foreach (var item in ViewBag.Assets as List<Express.Core.Models.GlAccount>)
         {
             <tr>
-                <td>
+                <td style="text-align: center">
                     @Html.DisplayFor(modelItem => item.AccountName)
                 </td>
-                <td>
+                <td style="text-align: center">
                     @item.AccountBalance.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
                 </td>
             </tr>
@@ -93,10 +93,10 @@
 
     <table class="table table-bordered">
         <tr>
-            <th>
+            <th style="text-align: center">
                 Account
             </th>
-            <th>
+            <th style="text-align: center">
                 Amount
             </th>
         </tr>
@@ -108,24 +108,24 @@
         @foreach (var item in ViewBag.Capitals as List<Express.Core.Models.GlAccount>)
         {
             <tr>
-                <td>
+                <td style="text-align: center">
                     @Html.DisplayFor(modelItem => item.AccountName)
                 </td>
-                <td>
+                <td style="text-align: center">
                     @item.AccountBalance.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
                 </td>
             </tr>
         }
         <tr>
-            <th>Total</th>
-            <th>
+            <th style="text-align: center">Total</th>
+            <th style="text-align: center">
                 @ViewBag.CapitalSum.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
             </th>
         </tr>
         <tr></tr>
         <tr>
             <td style=" border: 2px solid black; text-align:center"><b>Liability</b></td>
-            <td style=" border: 2px solid black; text-align:center"><b>N</b></td>
+            <td style=" border: 2px solid black; text-align:center"><b>$</b></td>
         </tr>
         @*@if (ViewBag.Capitals != null)
             {
@@ -134,19 +134,19 @@
         @foreach (var item in ViewBag.Liability as List<Express.Core.ViewModels.FinancialReportViewModel.LiabilityViewModel>)
         {
             <tr>
-                <td>
+                <td style="text-align: center">
                     @Html.DisplayFor(modelItem => item.AccountName)
                 </td>
-                <td>
+                <td style="text-align: center">
                     @item.Amount.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
                 </td>
             </tr>
         }
         <tr>
-            <th>Total</th>
+            <th style="text-align: center">Total</th>
             @{
                 decimal ltotal = (decimal)ViewBag.LiabilitySum;
-                <th>@ltotal.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
+                <th style="text-align: center">@ltotal.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
             }
         </tr>
         <tr><th></th></tr>
@@ -154,7 +154,7 @@
             <th style="  border: 2px solid black; text-align:center"><b>Capital + Liability</b></th>
             @{
                 decimal total = (decimal)ViewBag.CapitalSum + (decimal)ViewBag.LiabilitySum;
-                <th style="  border: 2px solid black;"><b>@total.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</b></th>
+                <th style="  border: 2px solid black; text-align: center"><b>@total.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</b></th>
             }
             @*<th>@((decimal)ViewBag.CapitalSum + (decimal)ViewBag.LiabilitySum)</th>*@
         </tr>

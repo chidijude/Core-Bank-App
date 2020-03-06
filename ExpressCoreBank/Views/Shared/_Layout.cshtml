@@ -1,156 +1,260 @@
 ﻿<!DOCTYPE html>
-<html>
+@using Microsoft.AspNet.Identity
+
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="image" href="data:image/png;base64,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">
-    <title>@ViewBag.Title ExpressOne</title>
-    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    @*@@Styles.Render("~/Content/css")*@
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
+
+    <title>Express! | </title>
+
+    <!-- Bootstrap -->
+    <link href="~/Content/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/Content/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/Content/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="~/Content/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+    <!-- bootstrap-progressbar -->
+    <link href="~/Content/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="~/Content/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
+    <!-- bootstrap-daterangepicker -->
+    <link href="~/Content/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="~/Content/build/css/custom.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Athens" , "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Express!</span></a>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="~/Content/build/images/user.png" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Welcome,</span>
+                            <h2>@User.Identity.GetUserName()</h2>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>General</h3>
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+
+                                        <li>@Html.ActionLink("Athens", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-edit"></i> Account Configurations <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("Account Configuration", "Create", "AccountConfigurations")</li>
+                                        <li><a href="form_buttons.html">Savings Account Configuration</a></li>
+                                        <li><a href="form_buttons.html">Current Account Configuration</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-desktop"></i> General Ledger Account <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("Add GL Account", "Create", "GlAccounts")</li>
+                                        <li>@Html.ActionLink("View GL accounts", "Index", "GlAccounts")</li>
+                                        
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-table"></i> Users <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("Add User", "Create", "Users")</li>
+                                        <li>@Html.ActionLink("View List of Users", "Index", "Users")</li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-bar-chart-o"></i> Tellers <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("Assign Tellers", "Create", "UserTills")</li>
+                                        <li>@Html.ActionLink("View List of Tellers", "Index", "UserTills")</li>
+                                        
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-clone"></i>Customers <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("Add New Customer", "Create", "Customers")</li>
+                                        <li>@Html.ActionLink("View Customer", "Index", "Customers")</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-clone"></i>Customer Accounts <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("View Customers Account", "Index", "CustomerAccounts")</li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="menu_section">
+                            <h3>Posting and Statements</h3>
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a><i class="fa fa-bug"></i> Teller Postings <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("Make Transactions", "SelectAccount", "TellerPosting")</li>
+                                        <li>@Html.ActionLink("View List of Teller Posted", "Index", "TellerPosting")</li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-windows"></i> General Ledger Postings <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("Gl Transactions", "Index", "GlPosting")</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-sitemap"></i> Financial Reports <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("Profit and Loss Report", "ProfitAndLoss", "FinancialReports")</li>
+                                        <li>@Html.ActionLink("Balance Sheet Report", "BalanceSheet", "FinancialReports")</li>
+                                        <li>@Html.ActionLink("Trial Balance", "TrialBalance", "FinancialReports")</li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Settings">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Lock">
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="javascript:document.getElementById('logoutForm').submit()">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Account Config", "Create", "AccountConfigurations")</li>
 
-                    @*@<li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">GL Category <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li>@Html.ActionLink("Add GL Category", "Create", "GlCategories")</li>
-                <li>@Html.ActionLink("View GL Categories", "Index", "GlCategories")</li>
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+                    <nav class="nav navbar-nav">
+                        <ul class=" navbar-right">
+                            <li class="nav-item dropdown open" style="padding-left: 15px;">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="~/Content/build/images/user.png" alt="">@User.Identity.GetUserName()
+                                </a>
+                                <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="javascript:;"> @Html.Partial("_LoginPartial")</a>
+                                    
 
-                <li role="separator" class="divider"></li>
-                <li></li>
 
-            </ul>
-        </li>*@
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">GL Account <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Add GL Account", "Create", "GlAccounts")</li>
-                            <li>@Html.ActionLink("View GL accounts", "Index", "GlAccounts")</li>
-
-                            <li role="separator" class="divider"></li>
-                            <li></li>
+                                </div>
+                            </li>
+                           
 
                         </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Add User", "Create", "Users")</li>
-                            <li>@Html.ActionLink("View List of Users", "Index", "Users")</li>
-
-                            <li role="separator" class="divider"></li>
-                            <li></li>
-
-                        </ul>
-                    </li>
-
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tellers <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Assign Tellers", "Create", "UserTills")</li>
-                            <li>@Html.ActionLink("View List of Tellers", "Index", "UserTills")</li>
-
-                            <li role="separator" class="divider"></li>
-                            <li></li>
-
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Customers <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Add New Customer", "Create", "Customers")</li>
-                            <li>@Html.ActionLink("View Customer", "Index", "Customers")</li>
-
-                            <li role="separator" class="divider"></li>
-                            <li></li>
-
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Customers Account<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-
-                            <li>@Html.ActionLink("View Customers Account", "Index", "CustomerAccounts")</li>
-
-                            <li role="separator" class="divider"></li>
-                            <li></li>
-
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Teller Posting <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-
-                            <li>@Html.ActionLink("Make Transactions", "SelectAccount", "TellerPosting")</li>
-                            <li>@Html.ActionLink("View List of Teller Posted", "Index", "TellerPosting")</li>
-
-                            <li role="separator" class="divider"></li>
-                            <li></li>
-
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gl Posting <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-
-                            <li>@Html.ActionLink("Gl Transactions", "Index", "GlPosting")</li>
-                            @*<li>@Html.ActionLink("View List of Gl Posted", "Index", "GlPosting")</li>*@
-
-                            <li role="separator" class="divider"></li>
-                            <li></li>
-
-                        </ul>
-                    </li>
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reports <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-
-                            <li>@Html.ActionLink("Profit and Loss Report", "ProfitAndLoss", "FinancialReports")</li>
-                            <li>@Html.ActionLink("Balance Sheet Report", "BalanceSheet", "FinancialReports")</li>
-                            <li>@Html.ActionLink("Trial Balance", "TrialBalance", "FinancialReports")</li>
-
-                            <li role="separator" class="divider"></li>
-                            <li></li>
-
-                        </ul>
-                    </li>
-                   
-
-                </ul>
-                
-                @Html.Partial("_LoginPartial")
+                       
+                    </nav>
+                </div>
             </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                @RenderBody()
+            </div>
+            <footer>
+                <div class="pull-right">
+                    <p>&copy; @DateTime.Now.Year - Athens by Chidi</p>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-                      
-            <hr />
-            <p>&copy; @DateTime.Now.Year - Athens by Chidi</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <!-- jQuery -->
+    <script src="~/Content/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Content/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/Content/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="~/Content/vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="~/Content/vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="~/Content/vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="~/Content/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="~/Content/vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="~/Content/vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="~/Content/vendors/Flot/jquery.flot.js"></script>
+    <script src="~/Content/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="~/Content/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="~/Content/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="~/Content/vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="~/Content/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="~/Content/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="~/Content/vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="~/Content/vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="~/Content/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="~/Content/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="~/Content/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="~/Content/vendors/moment/min/moment.min.js"></script>
+    <script src="~/Content/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="~/Content/build/js/custom.min.js"></script>
+
 </body>
 </html>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
